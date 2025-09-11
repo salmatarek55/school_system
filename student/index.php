@@ -2,7 +2,7 @@
 include_once "../Conect.php";
 $conect = new Conect();
 
-if (isset($_POST['id'])) {
+if (isset($_POST['Id'])) {
     if ($conect->delete('student_info', $_POST['Id'])) {
         header('location:\school_system\student\index.php?delete=success');
         exit;
@@ -60,7 +60,7 @@ include_once "../header.php";
                         <td><?= @$conect->selectOne('users',$value['user_id']) ['user_name']?></td>
                         <td>
                             <form method="POST" onsubmit="return confirm('are you sure to delete student')">
-                                <input type="hidden" name="id" value="<?= $value['Id'] ?>">
+                                <input type="hidden" name="Id" value="<?= $value['Id'] ?>">
                                 <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
                         </td>
@@ -79,3 +79,4 @@ include_once "../header.php";
 
 <!-- container close -->
 <?php include_once "../footer.php";
+
