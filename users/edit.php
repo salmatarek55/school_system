@@ -1,10 +1,10 @@
 <?php
 include_once "../Conect.php";
 $conct = new Conect();
-if (!isset($_GET['id'])) {
+if (!isset($_GET['Id'])) {
     die("Missing id");
 }
-$id = (int) $_GET['id'];
+$id = (int) $_GET['Id'];
 $user = $conct->selectOne('users', $id);
 
 
