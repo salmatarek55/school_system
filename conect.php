@@ -86,12 +86,20 @@ class Conect
                 return [];
     }
 
-    public function delete(string $tableName, $id): bool
-    {
-        $s = "DELETE FROM $tableName WHERE Id=$id";
-        if ($this->conn->query($s)) {
-            return true;
+   public function delete(string $tableName, $id): bool
+{
+    $id = (int) $id;
+    if ($tableName == 'users') {
+        $check = $this->conn->query("SELECT * FROM teachers WHERE user_id = $id");
+        if ($check && $check->num_rows > 0) {
+            return false;
         }
-        return false;
     }
+    $s = "DELETE FROM $tableName WHERE Id=$id";
+    if ($this->conn->query($s)) {
+        return true;
+    }
+    return false;
 }
+}
+
