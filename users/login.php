@@ -57,6 +57,13 @@ if(isset ($_POST['user_name'])){
   <div class="card login-card">
     <div class="card-body p-5">
       <h3 class="text-center mb-4 login-title">Login</h3>
+      
+      <?php if(isset($_SESSION['registered'])): ?>
+        <div class="alert alert-success text-center">
+          <?= $_SESSION['registered']; ?>
+        </div>
+        <?php unset($_SESSION['registered']); ?>
+      <?php endif; ?>
 
       <?php if($error): ?>
         <div class="alert alert-danger text-center"><?= $error ?></div>
@@ -108,5 +115,4 @@ if(isset ($_POST['user_name'])){
 
 <?php
 include_once "../footer.php";
-?>
 ?>
